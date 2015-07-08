@@ -1,0 +1,50 @@
+<div class="row">
+	<div class="col-sm-6">
+		<div class="row">
+			<img ng-src="./img/{{item.image}}" class="img-responsive" ng-show="item.image">
+			<h4>
+				<strong>{{ item.name }}</strong>
+				<span class="pull-right">{{ item.price | currency }}</span>
+			</h4>
+			<div class="pull-right" ng-bind-html="item | showModifiers"></div>
+		</div>
+		<hr>
+		<div class="row">
+			<ul class="list-group">
+				<l1 class="list-group-item" ng-repeat="modifier in item.modifiers" ng-if="(modifier.type == 'A')">
+					<div ng-init="showSelects = false" ng-click="showSelects = true">
+						<span>{{modifier.name}} : </span>
+						<span class="pull-right">{{modifier.selects[modifier.selected].name}}</span>
+					</div>
+					<div class="btn-group-vertical btn-block" role="group" ng-show="showSelects">
+						<button class="btn btn-primary" ng-repeat="select in modifier.selects" ng-model="modifier.selected" btn-radio="{{$index}}" ng-click="$parent.showSelects = false">
+							<span class="pull-left">{{ select.name }}</span>
+							<span class="pull-right">{{ select.price | currency }}</span>
+						</button>
+					</div>
+				</li>
+			</ul>
+
+			<ul class="list-group" ng-repeat="modifier in item.modifiers" ng-if="(modifier.type == 'B')">
+				<li class="list-group-item" ng-repeat="select in modifier.selects">
+					<div ng-show="(select.qty==0)">
+						<span class="text-left">{{ select.name }} ({{select.price}})</span>
+						<span class="pull-right" ng-click="addon(select)">ADD</span>
+					</div>
+					<div ng-show="(select.qty>0)">
+						<span class="text-left">{{ select.qty }} </span>
+						<span class="text-left">{{ select.name }} ({{select.price}})</span>
+						<span class="pull-right">
+							<span ng-click="addOne(select)">+</span>
+							<span ng-click="subtractOne(select)">-</span>
+						</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<button class="btn btn-block" ng-click="reset()">RESET MODIFIERS</button>
+		<button class="btn btn-block btn-primary" ng-click="submit()">DONE!</button>
+	</div>
+	<br>
+	<br>
+</div>

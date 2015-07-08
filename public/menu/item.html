@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-sm-6">
+		<h4>
+			<strong>{{ item.name }}</strong>
+			<span class="pull-right">${{ item.price }}</span>
+		</h4>
+		<img ng-src="./img/{{item.image}}" class="img-responsive" ng-show="item.image">
+		<hr>
+		<div ng-repeat="option in options">
+			<h6>{{option.label}} {{option.type}} : {{option.data[0].name}}</h6>
+			<!--
+			<div class="btn-group btn-group-lg btn-group-justified">
+				<div class="btn-group" ng-repeat="data in modifier.data">
+					<label class="btn btn-default" ng-model="modifier.radioModel" btn-radio="{{ data.abbr }}">
+						<span class="pull-left text-nowrap">{{ data.abbr }}</span>
+						<span class="pull-right">{{ data.price | currency }}</span>
+					</label>
+				</div>
+			</div>
+		-->
+		</div>
+
+	</div>
+</div>

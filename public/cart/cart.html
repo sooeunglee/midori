@@ -1,0 +1,56 @@
+<div class="row">
+	<section class="col-sm-6 col-sm-offset-3">
+		<table class="table table-striped">
+			<tr ng-hide="cart.items[0]" class="text-center">
+				<td><strong>No item in the cart!</strong></td>
+			</tr>
+			<tr ng-repeat="item in cart.items track by $index" ng-class="{success: item.selected}" ui-sref="modifier({itemId: item._id})">
+				<td>
+					<strong>{{item.name}}</strong>
+					<span ng-show="(item.qty>1)">
+						<i class="fa fa-times"> {{item.qty}}</i>
+					</span>
+					<br/>
+					<span class="small">{{ item.modifiers | displayModifiers }}</span>
+				</td>
+				<td class="text-right">{{item.price | currency}}</td>
+				<!--
+				<td class="remove"><i class="fa fa-times" ng-click="remove($index)"></i></td>
+			-->
+			</tr>
+		</table>
+		<button class="btn btn-info btn-block btn-lg" ui-sref="menu">+ Add Another Item</button>
+		<button class="btn btn-danger btn-block btn-lg" ng-click="removeAll()">Remove All</button>
+		<div class="pull-right text-right total_container">
+			<div>
+				<span>Subtotal:</span>
+				<span>{{cart.subtotal | currency}}</span>
+			</div>
+			<div>
+				<span>Tax:</span>
+				<span>{{cart.tax | currency}}</span>
+			</div>
+			<div>
+				<span>Total:</span>
+				<span>{{cart.total | currency}}</span>
+			</div>
+		</div>
+	</section>
+	<section class="col-sm-6 col-sm-offset-3">
+		<ul class="list-group">
+			<l1 class="list-group-item">
+				<div ng-init="showSelects = false" ng-click="showSelects = true">
+					<span>Choose Dining Type : </span>
+					<span class="pull-right">{{ cart.diningType }}</span>
+				</div>
+				<div class="btn-group btn-group-justified" role="group" ng-show="showSelects">
+					<a type="button" class="btn btn-primary btn-lg" ng-repeat="diningType in diningTypes" ng-model="cart.diningType" btn-radio="diningType" ng-click="$parent.showSelects = false">
+						{{ diningType }}
+					</a>
+				</div>
+			</li>
+		</ul>
+		<button class="btn btn-primary btn-block btn-lg" role="button" ng-init="submitted=false" ng-disabled="submitted" ng-click="placeOrder(); submitted=true">Place Order!</button>
+	</section>
+	</div>
+</div>

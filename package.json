@@ -1,0 +1,27 @@
+{
+  "name": "midori",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "angular": "^1.3.15",
+    "async": "^0.9.0",
+    "body-parser": "~1.12.0",
+    "cookie-parser": "~1.3.4",
+    "debug": "~2.1.1",
+    "ejs": "~2.3.1",
+    "express": "~4.12.2",
+    "mongodb-autoincrement": "^1.0.0",
+    "mongoose": "^4.0.2",
+    "morgan": "~1.5.1",
+    "multer": "^0.1.7",
+    "passport": "~0.1.17",
+    "passport-facebook": "~1.0.2",
+    "passport-google-oauth": "~0.1.5",
+    "passport-local": "~0.1.6",
+    "passport-twitter": "~1.0.2",
+    "serve-favicon": "~2.2.0"
+  }
+}

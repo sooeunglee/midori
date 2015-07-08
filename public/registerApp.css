@@ -1,0 +1,124 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:700);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:700);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+body {
+  background-color: #eee;
+  font-family: 'PT Sans', sans-serif;
+  padding-bottom: 60px;
+}
+
+button.selected {
+  background-color: yellow;
+}
+/*
+.small-screen {
+  display: none;
+}
+.normal-screen {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .small-screen {
+    display: block;
+  }
+  .normal-screen {
+    display: none;
+  }
+}
+
+.scrollable {
+  height: 300px;
+  overflow: auto;
+}
+*/
+h4, h6 {
+  margin: 5px 0;
+}
+
+.clear {
+  clear: both;
+}
+
+.full {
+  overflow: hidden;
+}
+
+.underline {
+  border-bottom: 1px dashed #aaa;
+}
+
+.flex-layout {
+  display: flex;
+  flex-flow: row wrap;
+}
+.menu, .aside {
+  flex: 1 100%;
+}
+
+.menu-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.menu-item {
+  min-width: 100px;
+  /*max-width: 200px;*/
+  border: 1px solid #aaa;
+  overflow: hidden;
+  padding: 5px;
+  margin: 2px;
+  flex-grow: 1;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.menu-item > * {
+  margin: 5px 0;
+}
+
+.category-name {
+  margin: 0;
+  padding: 3px;
+}
+
+.aside {
+  min-width: 320px;
+  padding: 10px;
+}
+
+@media all and (min-width: 700px) {
+  .menu {
+    flex: 2 1 0;
+    display: block !important;
+  }
+  .aside {
+    flex: 1 1 0;
+  }
+  .xs-only {
+    display: none;
+  }
+}
+
+@media all and (min-width: 900px) {
+  .menu {
+    flex: 3 10px;
+    display: block !important;
+  }
+  .aside {
+    flex: 1 10px;
+  }
+  .xs-only {
+    display: none;
+  }
+}
+
+.cart {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 320px;
+  padding: 10px;
+}

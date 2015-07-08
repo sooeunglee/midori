@@ -1,0 +1,56 @@
+<div>
+    <section>
+        <h1 class="underline">
+            <!--<i class="fa fa-shopping-cart"></i>-->
+            <i class="fa fa-shopping-cart"></i>
+            <span class="pull-right">{{cart.total | currency}}</span>
+        </h1>
+        <div>
+            <div ng-hide="cart.items[0]" class="text-center underline">
+                <h4>No item in the cart!</h4>
+            </div>
+            <div ng-repeat="item in cart.items track by $index" ng-class="{success: item.selected}" ui-sref="register.modifier({itemId: item._id})" class="clear underline">
+                <h4>
+                    <strong>{{ item.name }}</strong>
+                    <span class="pull-right">{{ item.price | currency }}</span>
+                </h4>
+                <h6>{{ item.modifiers | displayModifiers }}</h6>
+            </div>
+            <div ui-sref="register" class="text-center underline xs-only">
+                <h4><i class="fa fa-cart-plus"></i> Add Another Item</h4>
+            </div>
+            <br>
+        </div>
+        <div>
+            <button class="btn btn-lg" ng-click="removeAll()" ng-show="cart.items.length"><i class="fa fa-trash"></i> Remove All</button>
+            <div class="pull-right text-right total_container">
+                <div>
+                    <span>Subtotal:</span>
+                    <span>{{cart.subtotal | currency}}</span>
+                </div>
+                <div>
+                    <span>Tax:</span>
+                    <span>{{cart.tax | currency}}</span>
+                </div>
+                <div>
+                    <span>Total:</span>
+                    <span>{{cart.total | currency}}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="clear">
+        <br>
+        <div>
+            <span>Dining Type : </span>
+            <span class="pull-right">{{ cart.diningType }}</span>
+        </div>
+        <div class="btn-group btn-group-justified" role="group">
+            <a type="button" class="btn btn-primary btn-lg" ng-repeat="diningType in diningTypes" ng-model="cart.diningType" btn-radio="diningType.name">
+                <i class="{{diningType.icon}}"></i>&nbsp;{{diningType.name}}
+            </a>
+        </div>
+        <br>
+        <button class="btn btn-primary btn-block btn-lg" role="button" ng-init="submitted=false" ng-disabled="!(cart.items.length) || submitted" ng-click="placeOrder(); submitted=true"><i class="fa fa-bars"></i> Place The Order!</button>
+    </section>
+</div>
